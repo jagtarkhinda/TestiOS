@@ -35,6 +35,7 @@ class GameScene: SKScene {
         home.physicsBody?.affectedByGravity = false;
         home.physicsBody?.allowsRotation = false
         home.physicsBody?.isDynamic = false
+        self.addChild(label)
         self.addChild(home)
        
     
@@ -78,6 +79,7 @@ class GameScene: SKScene {
         // add the cat to the scene
         self.addChild(lm)
         
+        
         // add the cat to the cats array
         self.lemings.append(lm)
         
@@ -101,24 +103,28 @@ class GameScene: SKScene {
           
             timeOfLastUpdate = currentTime
             // make a leming
-            if(count < 5){
+            if(count < 15){
             self.makeleming()
                 count += 1
             }
-            if(count >= 5){
+            if(count >= 15){
                 if(goingHome >= 13){
                 label.text = "You Win"
                 label.fontColor = .white
+                    label.color = .red
                 label.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
                 label.fontSize = 29.0
                 label.zPosition = 1
+                    
                 }
                 else if(goingHome < 13){
                     label.text = "You Lose"
                     label.fontColor = .white
-                    label.verticalAlignmentMode = .center
+                     label.color = .red
+                     label.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
                     label.fontSize = 29.0
                     label.zPosition = 1
+                    
                 }
                     
             }
